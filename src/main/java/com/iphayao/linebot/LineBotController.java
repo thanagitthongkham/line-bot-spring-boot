@@ -14,6 +14,7 @@ import com.linecorp.bot.model.message.TextMessage;
 import com.linecorp.bot.model.response.BotApiResponse;
 import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
+//import com.mendix.core.Core;
 
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,7 @@ public class LineBotController {
     @EventMapping
     public void handleTextMessage(MessageEvent<TextMessageContent> event) {
        // log.info(event.toString());
+    	//Core.getLogger(getActionName()).info(event.toString());
         TextMessageContent message = event.getMessage();
         handleTextContent(event.getReplyToken(), event, message);
     }
