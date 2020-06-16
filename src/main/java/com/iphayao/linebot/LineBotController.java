@@ -88,9 +88,12 @@ public class LineBotController {
                 }
                 break;
             }
+            case "aaa":{
+            	 this.replyText(replyToken,"aaa");
+            }
             default:
             //    log.info("Return echo message %s : %s", replyToken, text);
-                this.replyText(replyToken, text);
+                this.replyText(replyToken,"กรุณาใส่คำให้ถูกต้อง");
         }
     }
 
