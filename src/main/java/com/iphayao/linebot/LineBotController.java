@@ -98,10 +98,10 @@ public class LineBotController {
             	 break;
             }
             case "rest":{
-//            	Callrest rest=new Callrest();
-//            	String s=rest.getCV("s");
-//                this.replyText(replyToken,s);
-                this.replyText(replyToken,"rest");
+            	Callrest rest=new Callrest();
+            	String s=rest.getCV("1");
+                this.replyText(replyToken,s);
+              //  this.replyText(replyToken,"rest");
            	    break;
            }
             default:

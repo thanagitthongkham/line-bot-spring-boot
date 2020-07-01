@@ -33,6 +33,28 @@
             <version>1.18.0</version>
             <scope>provided</scope>
         </dependency>
+         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+	  		 <groupId>org.apache.httpcomponents</groupId>
+ 			 <artifactId>httpclient</artifactId>
+			 <version>4.5.12</version>
+		</dependency>
+		<dependency>
+           <groupId>javax.ws.rs</groupId>
+    		 <artifactId>javax.ws.rs-api</artifactId>
+   			 <version>2.1.1</version>
+		</dependency>
+		
+  		<dependency>
+   			 <groupId>com.sun.jersey</groupId>
+   			 <artifactId>jersey-client</artifactId>
+    			<version>1.19.4</version>
+		</dependency>
         <!-- ส่วนที่เพิ่มเข้ามา -->
     </dependencies>
 
