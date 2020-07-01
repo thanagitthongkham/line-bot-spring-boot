@@ -45,5 +45,17 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/BDLeasingJPA_main/userlib/spring-beans-5.2.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/BDLeasingJPA_main/userlib/spring-boot-autoconfigure-2.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thanagit.tho/.m2/repository/org/springframework/boot/spring-boot/2.0.4.RELEASE/spring-boot-2.0.4.RELEASE.jar" sourcepath="C:/Users/thanagit.tho/.m2/repository/org/springframework/boot/spring-boot/2.0.4.RELEASE/spring-boot-2.0.4.RELEASE-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
+			<attribute name="maven.groupId" value="org.springframework.boot"/>
+			<attribute name="maven.artifactId" value="spring-boot"/>
+			<attribute name="maven.version" value="2.0.4.RELEASE"/>
+			<attribute name="maven.scope" value="runtime"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
