@@ -2,6 +2,8 @@ package com.iphayao.linebot;
 
 
 import java.io.IOException;
+import java.util.logging.Logger;
+
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriBuilder;
@@ -36,6 +38,10 @@ import com.sun.jersey.api.representation.Form;
 
 public class Callrest {
     protected String getCV(String Userid)throws ClientProtocolException, IOException {
+    	 // Create a Logger 
+        Logger logger 
+            = Logger.getLogger( 
+            		Callrest.class.getName()); 
 //    	ClientConfig config = new DefaultClientConfig();
 //    	  Client client = Client.create(config);
 //    	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/1").build());
@@ -58,7 +64,8 @@ public class Callrest {
        	  
        	  
     	}catch(Exception e) {
-    		System.out.println("Error "+e);
+    		logger.info("Error "+e);
+    		
     	}
     	
     	return "x";
