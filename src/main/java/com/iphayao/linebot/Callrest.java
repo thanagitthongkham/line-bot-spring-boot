@@ -46,19 +46,23 @@ public class Callrest {
 //    	  
 //    	  return "x";
     
+    	try {
+    		 ClientConfig config = new DefaultClientConfig();
+       	  Client client = Client.create(config);
+       	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/").build());
+       	  Form form = new Form();
+       	  form.add("OrderID",Userid);
+       	  ClientResponse response = service.path("restPath").path("resourcePath").
+       	  type(MediaType.APPLICATION_FORM_URLENCODED).post(ClientResponse.class, form);
+       	  System.out.println("Response " + response.getEntity(String.class));
+       	  
+       	  
+    	}catch(Exception e) {
+    		System.out.println("Error "+e);
+    	}
     	
+    	return "x";
     	
-    	
-    	 ClientConfig config = new DefaultClientConfig();
-    	  Client client = Client.create(config);
-    	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/").build());
-    	  Form form = new Form();
-    	  form.add("OrderID",Userid);
-    	  ClientResponse response = service.path("restPath").path("resourcePath").
-    	  type(MediaType.APPLICATION_FORM_URLENCODED).post(ClientResponse.class, form);
-    	  System.out.println("Response " + response.getEntity(String.class));
-    	  
-    	  return "x";
     } 
     	
     
