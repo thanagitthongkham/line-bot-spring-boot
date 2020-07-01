@@ -35,7 +35,7 @@ import com.sun.jersey.api.representation.Form;
 
 
 public class Callrest {
-    protected String getCV(String Userid) {
+    protected String getCV(String Userid)throws ClientProtocolException, IOException {
 //    	ClientConfig config = new DefaultClientConfig();
 //    	  Client client = Client.create(config);
 //    	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/1").build());

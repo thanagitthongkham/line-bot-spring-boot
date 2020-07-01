@@ -18,8 +18,11 @@ import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+
+import org.apache.http.client.ClientProtocolException;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +40,7 @@ public class LineBotController {
         		LineBotController.class.getName()); 
 
     @EventMapping
-    public void handleTextMessage(MessageEvent<TextMessageContent> event) {
+    public void handleTextMessage(MessageEvent<TextMessageContent> event) throws ClientProtocolException, IOException {
         logger.info(event.toString());
     	//Core.getLogger(getActionName()).info(event.toString());
         TextMessageContent message = event.getMessage();
@@ -66,7 +69,7 @@ public class LineBotController {
     }
 
     private void handleTextContent(String replyToken, Event event, 
-                                   TextMessageContent content) {
+                                   TextMessageContent content) throws ClientProtocolException, IOException {
         String text = content.getText();
 
        // logger.info("Got text message from %s : %s", replyToken, text);
