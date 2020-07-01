@@ -64,6 +64,8 @@ public class Callrest {
        	  
        	  
     	}catch(Exception e) {
+    		System.out.println("Error "+e);
+    		System.err.println("Error "+e);
     		logger.info("Error "+e);
     		
     	}
