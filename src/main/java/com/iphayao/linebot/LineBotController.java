@@ -1,5 +1,5 @@
 package com.iphayao.linebot;
-
+import com.iphayao.linebot.*;
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.event.Event;
@@ -24,16 +24,21 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.logging.Logger; 
 
 @Slf4j
 @LineMessageHandler
 public class LineBotController {
     @Autowired
     private LineMessagingClient lineMessagingClient;
+    // Create a Logger 
+    Logger logger 
+        = Logger.getLogger( 
+        		LineBotController.class.getName()); 
 
     @EventMapping
     public void handleTextMessage(MessageEvent<TextMessageContent> event) {
-       // log.info(event.toString());
+        logger.info(event.toString());
     	//Core.getLogger(getActionName()).info(event.toString());
         TextMessageContent message = event.getMessage();
         handleTextContent(event.getReplyToken(), event, message);
@@ -41,7 +46,7 @@ public class LineBotController {
     
     @EventMapping
     public void handleStickerMessage(MessageEvent<StickerMessageContent> event) {
-       // log.info(event.toString());
+        logger.info(event.toString());
         StickerMessageContent message = event.getMessage();
         reply(event.getReplyToken(), new StickerMessage(
                 message.getPackageId(), message.getStickerId()
@@ -50,7 +55,7 @@ public class LineBotController {
     
     @EventMapping
     public void handleLocationMessage(MessageEvent<LocationMessageContent> event) {
-       // log.info(event.toString());
+        logger.info(event.toString());
         LocationMessageContent message = event.getMessage();
         reply(event.getReplyToken(), new LocationMessage(
                 (message.getTitle() == null) ? "Location replied" : message.getTitle(),
@@ -64,7 +69,7 @@ public class LineBotController {
                                    TextMessageContent content) {
         String text = content.getText();
 
-      //  log.info("Got text message from %s : %s", replyToken, text);
+       // logger.info("Got text message from %s : %s", replyToken, text);
 
         switch (text) {
             case "Profile": {
@@ -93,11 +98,14 @@ public class LineBotController {
             	 break;
             }
             case "rest":{
-                this.replyText(replyToken,"aaa");
+            	Callrest rest=new Callrest();
+            	String s=rest.getCV("s");
+                this.replyText(replyToken,s);
+                //this.replyText(replyToken,"rest");
            	    break;
            }
             default:
-            //    log.info("Return echo message %s : %s", replyToken, text);
+            //    logger.info("Return echo message %s : %s", replyToken, text);
                 this.replyText(replyToken,"กรุณาใส่คำให้ถูกต้อง");
         }
     }
