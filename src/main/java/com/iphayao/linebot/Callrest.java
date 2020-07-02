@@ -67,10 +67,10 @@ public class Callrest {
     		    postConnection.setDoOutput(true);
     		   // postConnection.connect();
     		    System.out.println("Call Rest : OS ");
-    		    OutputStream os = postConnection.getOutputStream();
-    		    os.write(POST_PARAMS.getBytes());
-    		    os.flush();
-    		    os.close();
+//    		    OutputStream os = postConnection.getOutputStream();
+//    		    os.write(POST_PARAMS.getBytes());
+//    		    os.flush();
+//    		    os.close();
     		    int responseCode = postConnection.getResponseCode();
     		    System.out.println("POST Response Code :  " + responseCode);
     		    System.out.println("POST Response Message : " + postConnection.getResponseMessage());
