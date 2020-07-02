@@ -59,10 +59,10 @@ public class Callrest {
     			        "    \"title\": \"Test Title\",\r\n" +
     			        "    \"body\": \"Test Body\"" + "\n}";
     		 //URL url = new URL("http://localhost:8082/rest/prsorderservice/v1/Post");
-    		 URL obj = new URL("http://localhost:8082/rest/prsorderservice/v1/Post/1");
+    		 URL obj = new URL("http://localhost:8082/rest/prsorderservice/v1/Post/");
     		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
     		    postConnection.setRequestMethod("POST");
-    		   // postConnection.setRequestProperty("OrderID", "1");
+    		    postConnection.setRequestProperty("OrderID", "1");
     		    postConnection.setRequestProperty("Content-Type", "application/json");
     		    postConnection.setDoOutput(true);
     		   // postConnection.connect();
