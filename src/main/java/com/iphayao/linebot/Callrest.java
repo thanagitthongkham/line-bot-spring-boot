@@ -62,7 +62,7 @@ public class Callrest {
     		 URL obj = new URL("http://localhost:8082/rest/prsorderservice/v1/Post/");
     		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
     		    postConnection.setRequestMethod("POST");
-    		    postConnection.setRequestProperty("OrderID", "1");
+    		    postConnection.setRequestProperty("OrderID","1");
     		    postConnection.setRequestProperty("Content-Type", "application/json");
     		    postConnection.setDoOutput(true);
     		   // postConnection.connect();
@@ -72,6 +72,7 @@ public class Callrest {
 //    		    os.flush();
 //    		    os.close();
     		    int responseCode = postConnection.getResponseCode();
+    		    System.out.println("Call Rest : responseCode ");
     		    System.out.println("POST Response Code :  " + responseCode);
     		    System.out.println("POST Response Message : " + postConnection.getResponseMessage());
     		    if (responseCode == HttpURLConnection.HTTP_CREATED) { //success
