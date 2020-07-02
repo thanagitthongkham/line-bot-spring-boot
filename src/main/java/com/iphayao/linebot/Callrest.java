@@ -18,6 +18,7 @@ import javax.ws.rs.core.UriBuilder;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 import com.sun.jersey.json.impl.provider.entity.JSONRootElementProvider;
 
+
 import java.io.IOException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
@@ -56,10 +57,11 @@ public class Callrest {
     
     	try {
     		 ClientConfig config = new DefaultClientConfig();
-    		// config.getClasses().add(JSONRootElementProvider.class);
+    		 config.getClasses().add(JSONRootElementProvider.class);
     		 config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+//    		 config.getClasses().add(GsonJerseyProvider.class);
     	//	 config.getProperties().put(key, value)
-       	  Client client = Client.create(config);
+       	  Client client = Client.create(new DefaultClientConfig());
        	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/").build());
        	  Form form = new Form();
        	  form.add("OrderID",Userid);
