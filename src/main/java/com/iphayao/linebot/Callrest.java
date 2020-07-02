@@ -37,7 +37,7 @@ import com.sun.jersey.api.representation.Form;
 
 
 public class Callrest {
-    protected String getCV(String Userid)throws ClientProtocolException, IOException {
+    public String getCV(String Userid)throws ClientProtocolException, IOException {
     	 // Create a Logger 
         Logger logger 
             = Logger.getLogger( 
