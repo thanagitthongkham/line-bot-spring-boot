@@ -16,6 +16,7 @@ import javax.ws.rs.core.UriBuilder;
 
 //throws ClientProtocolException, IOException
 import com.sun.jersey.core.util.MultivaluedMapImpl;
+import com.sun.jersey.json.impl.provider.entity.JSONRootElementProvider;
 
 import java.io.IOException;
 import javax.ws.rs.core.MediaType;
@@ -54,6 +55,9 @@ public class Callrest {
     
     	try {
     		 ClientConfig config = new DefaultClientConfig();
+    		 config.getClasses().add(JSONRootElementProvider.class);
+
+    	//	 config.getProperties().put(key, value)
        	  Client client = Client.create(config);
        	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/").build());
        	  Form form = new Form();
