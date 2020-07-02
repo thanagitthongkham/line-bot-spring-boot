@@ -62,10 +62,10 @@ public class Callrest {
     		 URL obj = new URL("http://localhost:8082/rest/prsorderservice/v1/Post/1");
     		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
     		    postConnection.setRequestMethod("POST");
-    		    postConnection.setRequestProperty("OrderID", "1");
+    		   // postConnection.setRequestProperty("OrderID", "1");
     		    postConnection.setRequestProperty("Content-Type", "application/json");
     		    postConnection.setDoOutput(true);
-    		    postConnection.connect();
+    		   // postConnection.connect();
     		    System.out.println("Call Rest : OS ");
     		    OutputStream os = postConnection.getOutputStream();
     		    os.write(POST_PARAMS.getBytes());
