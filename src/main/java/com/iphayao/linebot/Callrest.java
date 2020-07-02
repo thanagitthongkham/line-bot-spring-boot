@@ -27,6 +27,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.api.representation.Form;
 
 
@@ -56,7 +57,7 @@ public class Callrest {
     	try {
     		 ClientConfig config = new DefaultClientConfig();
     		 config.getClasses().add(JSONRootElementProvider.class);
-
+    		 config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
     	//	 config.getProperties().put(key, value)
        	  Client client = Client.create(config);
        	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/").build());
