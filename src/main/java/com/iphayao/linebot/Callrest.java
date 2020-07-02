@@ -56,7 +56,7 @@ public class Callrest {
     
     	try {
     		 ClientConfig config = new DefaultClientConfig();
-    		 config.getClasses().add(JSONRootElementProvider.class);
+    		// config.getClasses().add(JSONRootElementProvider.class);
     		 config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
     	//	 config.getProperties().put(key, value)
        	  Client client = Client.create(config);
