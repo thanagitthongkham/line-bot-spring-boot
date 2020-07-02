@@ -62,15 +62,16 @@ public class Callrest {
        	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/").build());
        	  Form form = new Form();
        	  form.add("OrderID",Userid);
+       	 System.out.println("Response");
        	  ClientResponse response = service.path("restPath").path("resourcePath").
        	  type(MediaType.APPLICATION_FORM_URLENCODED).post(ClientResponse.class, form);
        	  System.out.println("Response " + response.getEntity(String.class));
        	  
        	  
     	}catch(Exception e) {
-    		System.out.println("Error "+e);
+    		
     		System.err.println("Error "+e);
-    		logger.info("Error "+e);
+    		//logger.info("Error "+e);
     		
     	}
     	
