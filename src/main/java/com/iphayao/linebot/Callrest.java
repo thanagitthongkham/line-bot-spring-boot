@@ -73,6 +73,7 @@ public class Callrest {
     		 postConnection.setRequestMethod("GET");
     		 postConnection.setRequestProperty("Content-Type", "application/json");
     		 postConnection.setDoOutput(true);
+    		 postConnection.setConnectTimeout(5000);
     		   
     		   System.out.println("Call Rest : postConnection ");
 
