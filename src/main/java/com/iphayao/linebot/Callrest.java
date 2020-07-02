@@ -65,6 +65,8 @@ public class Callrest {
     		    postConnection.setRequestProperty("OrderID", "1");
     		    postConnection.setRequestProperty("Content-Type", "application/json");
     		    postConnection.setDoOutput(true);
+    		    postConnection.connect();
+    		    System.out.println("Call Rest : OS ");
     		    OutputStream os = postConnection.getOutputStream();
     		    os.write(POST_PARAMS.getBytes());
     		    os.flush();
