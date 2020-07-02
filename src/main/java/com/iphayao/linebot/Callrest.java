@@ -63,32 +63,56 @@ public class Callrest {
     		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
     		    postConnection.setRequestMethod("POST");
     		   // postConnection.setRequestProperty("OrderID","1");
-    		  //  postConnection.setRequestProperty("Content-Type", "application/json");
-    		  //  postConnection.setDoOutput(true);
+    		   postConnection.setRequestProperty("Content-Type", "application/json");
+    		   postConnection.setDoOutput(true);
+    		   //////////////////////////////
+    		   
+
+    			if (postConnection.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+    				throw new RuntimeException("Failed : HTTP error code : "
+    					+ postConnection.getResponseCode());
+    			}
+
+    			BufferedReader br = new BufferedReader(new InputStreamReader(
+    					(postConnection.getInputStream())));
+
+    			String output;
+    			System.out.println("Output from Server .... \n");
+    			while ((output = br.readLine()) != null) {
+    				System.out.println(output);
+    			}
+
+    			postConnection.disconnect();
+    		   
+    		   
+    		   
+    		   
+    		   
+    		   //////////////////////////
     		   // postConnection.connect();
-    		    System.out.println("Call Rest : OS ");
+//    		    System.out.println("Call Rest : OS ");
 //    		    OutputStream os = postConnection.getOutputStream();
 //    		    os.write(POST_PARAMS.getBytes());
 //    		    os.flush();
 //    		    os.close();
-    		    int responseCode = postConnection.getResponseCode();
-    		    System.out.println("Call Rest : responseCode ");
-    		    System.out.println("POST Response Code :  " + responseCode);
-    		    System.out.println("POST Response Message : " + postConnection.getResponseMessage());
-    		    if (responseCode == HttpURLConnection.HTTP_CREATED) { //success
-    		        BufferedReader in = new BufferedReader(new InputStreamReader(
-    		            postConnection.getInputStream()));
-    		        String inputLine;
-    		        StringBuffer response = new StringBuffer();
-    		        while ((inputLine = in .readLine()) != null) {
-    		            response.append(inputLine);
-    		        } in .close();
-    		        // print result
-    		        System.out.println(response.toString());
-    		    } else {
-    		        System.out.println("POST NOT WORKED");
-    		    }
-       	  
+//    		    int responseCode = postConnection.getResponseCode();
+//    		    System.out.println("Call Rest : responseCode ");
+//    		    System.out.println("POST Response Code :  " + responseCode);
+//    		    System.out.println("POST Response Message : " + postConnection.getResponseMessage());
+//    		    if (responseCode == HttpURLConnection.HTTP_CREATED) { //success
+//    		        BufferedReader in = new BufferedReader(new InputStreamReader(
+//    		            postConnection.getInputStream()));
+//    		        String inputLine;
+//    		        StringBuffer response = new StringBuffer();
+//    		        while ((inputLine = in .readLine()) != null) {
+//    		            response.append(inputLine);
+//    		        } in .close();
+//    		        // print result
+//    		        System.out.println(response.toString());
+//    		    } else {
+//    		        System.out.println("POST NOT WORKED");
+//    		    }
+//       	  
        	  
     	}catch(Exception e) {
     		
