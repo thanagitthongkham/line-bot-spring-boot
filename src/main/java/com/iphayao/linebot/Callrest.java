@@ -53,11 +53,15 @@ public class Callrest {
 
        // "http://localhost:8082/rest/prsorderservice/v1/Post"
     	try {
+    		System.out.println("Call Rest : Satrt ");
+    		
     		URL url = new URL("http://localhost:8082/rest/prsorderservice/v1/Post");
     		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
     		conn.setDoOutput(true);
     		conn.setRequestMethod("POST");
     		conn.setRequestProperty("Content-Type", "application/json");
+    		
+    		System.out.println("Call Rest : Input ");
     		
     		String input = "{\"OrderID\":1}";
     		//String input = "{\"qty\":100,\"name\":\"iPad 4\"}";
@@ -70,7 +74,9 @@ public class Callrest {
     			throw new RuntimeException("Failed : HTTP error code : "
     				+ conn.getResponseCode());
     		}
-
+            
+    		System.out.println("Call Rest : BufferedReader ");
+    		
     		BufferedReader br = new BufferedReader(new InputStreamReader(
     				(conn.getInputStream())));
 
