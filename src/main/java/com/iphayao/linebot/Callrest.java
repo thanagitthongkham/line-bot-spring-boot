@@ -61,7 +61,7 @@ public class Callrest {
     		 //URL url = new URL("http://localhost:8082/rest/prsorderservice/v1/Post");
     		// https://petstore.swagger.io/v2/pet/findByStatus?status=available
     		
-    		 URL obj = new URL("http://localhost:8082/rest/prsorderservice/v1/test");
+    		 URL obj = new URL("http://localhost/rest/prsorderservice/v1/test");
     		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
     		    postConnection.setRequestMethod("POST");
     		   // postConnection.setRequestProperty("OrderID","1");
