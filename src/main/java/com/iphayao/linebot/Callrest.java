@@ -1,7 +1,12 @@
 package com.iphayao.linebot;
 
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.logging.Logger;
 
 import javax.ws.rs.core.MediaType;
@@ -45,37 +50,43 @@ public class Callrest {
         Logger logger 
             = Logger.getLogger( 
             		Callrest.class.getName()); 
-//    	ClientConfig config = new DefaultClientConfig();
-//    	  Client client = Client.create(config);
-//    	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/1").build());
-//    	
-//    	// getting JSON data
-//    	  System.out.println(service. path("restPath").path("resourcePath").accept(MediaType.APPLICATION_XML).get(String.class));
-//    	  
-//    	  
-//    	  return "x";
-    
+
+       // "http://localhost:8082/rest/prsorderservice/v1/Post"
     	try {
-    		 ClientConfig config = new DefaultClientConfig();
-    		 config.getClasses().add(JSONRootElementProvider.class);
-    		 config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-//    		 config.getClasses().add(GsonJerseyProvider.class);
-    	//	 config.getProperties().put(key, value)
-       	  Client client = Client.create(config);
-       	 // Client client2 = Client.create();
-       	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/").build());
-       	  Form form = new Form();
-       	  form.add("OrderID",Userid);
-       	 System.out.println("Response");
-       	  ClientResponse response = service.path("restPath").path("resourcePath").
-       	  type(MediaType.APPLICATION_FORM_URLENCODED).post(ClientResponse.class, form);
-       	  System.out.println("Response " + response.getEntity(String.class));
+    		URL url = new URL("http://localhost:8082/rest/prsorderservice/v1/Post");
+    		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    		conn.setDoOutput(true);
+    		conn.setRequestMethod("POST");
+    		conn.setRequestProperty("Content-Type", "application/json");
+    		
+    		String input = "{\"OrderID\":1}";
+    		//String input = "{\"qty\":100,\"name\":\"iPad 4\"}";
+    		
+    		OutputStream os = conn.getOutputStream();
+    		os.write(input.getBytes());
+    		os.flush();
+
+    		if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+    			throw new RuntimeException("Failed : HTTP error code : "
+    				+ conn.getResponseCode());
+    		}
+
+    		BufferedReader br = new BufferedReader(new InputStreamReader(
+    				(conn.getInputStream())));
+
+    		String output;
+    		System.out.println("Output from Server .... \n");
+    		while ((output = br.readLine()) != null) {
+    			System.out.println(output);
+    		}
+
+    		conn.disconnect();
        	  
        	  
     	}catch(Exception e) {
     		
     		System.err.println("Error "+e);
-    		//logger.info("Error "+e);
+    		
     		
     	}
     	
