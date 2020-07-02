@@ -59,14 +59,22 @@ public class Callrest {
 //    			        "    \"title\": \"Test Title\",\r\n" +
 //    			        "    \"body\": \"Test Body\"" + "\n}";
     		 //URL url = new URL("http://localhost:8082/rest/prsorderservice/v1/Post");
-    		 URL obj = new URL("http://localhost:8082/rest/prsorderservice/v1/test");
-    		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
-    		    postConnection.setRequestMethod("POST");
+    		// https://petstore.swagger.io/v2/pet/findByStatus?status=available
+    		
+    	//	 URL obj = new URL("http://localhost:8082/rest/prsorderservice/v1/test");
+//    		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
+//    		    postConnection.setRequestMethod("POST");
     		   // postConnection.setRequestProperty("OrderID","1");
-    		   postConnection.setRequestProperty("Content-Type", "application/json");
-    		   postConnection.setDoOutput(true);
+//    		   postConnection.setRequestProperty("Content-Type", "application/json");
+//    		   postConnection.setDoOutput(true);
     		   //////////////////////////////
+    		 URL obj = new URL("https://petstore.swagger.io/v2/pet/findByStatus?status=available");
+    		 HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
+    		 postConnection.setRequestMethod("GET");
+    		 postConnection.setRequestProperty("Content-Type", "application/json");
+    		 postConnection.setDoOutput(true);
     		   
+    		   System.out.println("Call Rest : postConnection ");
 
     			if (postConnection.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
     				throw new RuntimeException("Failed : HTTP error code : "
