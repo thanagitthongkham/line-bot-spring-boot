@@ -45,7 +45,7 @@ import com.sun.jersey.api.representation.Form;
 
 
 public class Callrest {
-    public String getCV(String Userid)throws ClientProtocolException, IOException {
+    public void getCV(String Userid)throws ClientProtocolException, IOException {
     	 // Create a Logger 
         Logger logger 
             = Logger.getLogger( 
@@ -97,7 +97,7 @@ public class Callrest {
     		
     	}
     	
-    	return "x";
+    	//return "x";
     	
     } 
     	
