@@ -61,8 +61,9 @@ public class Callrest {
     		 config.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 //    		 config.getClasses().add(GsonJerseyProvider.class);
     	//	 config.getProperties().put(key, value)
-       	  Client client = Client.create(new DefaultClientConfig());
-       	  WebResource service = client.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/").build());
+       //	  Client client = Client.create(config);
+       	  Client client2 = Client.create();
+       	  WebResource service = client2.resource(UriBuilder.fromUri("http://localhost:8082/rest/prsorderservice/v1/Post/").build());
        	  Form form = new Form();
        	  form.add("OrderID",Userid);
        	 System.out.println("Response");
