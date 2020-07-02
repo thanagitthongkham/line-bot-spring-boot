@@ -54,42 +54,37 @@ public class Callrest {
        // "http://localhost:8082/rest/prsorderservice/v1/Post"
     	try {
     		System.out.println("Call Rest : Satrt ");
-    		
-    		URL url = new URL("http://localhost:8082/rest/prsorderservice/v1/Post");
-    		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-    		conn.setDoOutput(true);
-    		conn.setRequestMethod("POST");
-    		conn.setRequestProperty("Content-Type", "application/json");
-    		
-    		System.out.println("Call Rest : Input ");
-    		
-    		String input = "{\"OrderID\":1}";
-    		//String input = "{\"qty\":100,\"name\":\"iPad 4\"}";
-    		System.out.println("Call Rest : OS ");
-    		OutputStream os = conn.getOutputStream();
-    		System.out.println("Call Rest : 69 ");
-    		os.write(input.getBytes());
-    		System.out.println("Call Rest : 71 ");
-    		os.flush();
-    		System.out.println("Call Rest : 73 ");
-    		System.out.println("Call Rest : OS Get");
-    		if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-    			throw new RuntimeException("Failed : HTTP error code : "
-    				+ conn.getResponseCode());
-    		}
-            
-    		System.out.println("Call Rest : BufferedReader ");
-    		
-    		BufferedReader br = new BufferedReader(new InputStreamReader(
-    				(conn.getInputStream())));
-
-    		String output;
-    		System.out.println("Output from Server .... \n");
-    		while ((output = br.readLine()) != null) {
-    			System.out.println(output);
-    		}
-
-    		conn.disconnect();
+    		  final String POST_PARAMS = "{\n" + "\"userId\": 101,\r\n" +
+    			        "    \"id\": 101,\r\n" +
+    			        "    \"title\": \"Test Title\",\r\n" +
+    			        "    \"body\": \"Test Body\"" + "\n}";
+    		 //URL url = new URL("http://localhost:8082/rest/prsorderservice/v1/Post");
+    		 URL obj = new URL("http://localhost:8082/rest/prsorderservice/v1/Post");
+    		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
+    		    postConnection.setRequestMethod("POST");
+    		    postConnection.setRequestProperty("OrderID", "1");
+    		    postConnection.setRequestProperty("Content-Type", "application/json");
+    		    postConnection.setDoOutput(true);
+    		    OutputStream os = postConnection.getOutputStream();
+    		    os.write(POST_PARAMS.getBytes());
+    		    os.flush();
+    		    os.close();
+    		    int responseCode = postConnection.getResponseCode();
+    		    System.out.println("POST Response Code :  " + responseCode);
+    		    System.out.println("POST Response Message : " + postConnection.getResponseMessage());
+    		    if (responseCode == HttpURLConnection.HTTP_CREATED) { //success
+    		        BufferedReader in = new BufferedReader(new InputStreamReader(
+    		            postConnection.getInputStream()));
+    		        String inputLine;
+    		        StringBuffer response = new StringBuffer();
+    		        while ((inputLine = in .readLine()) != null) {
+    		            response.append(inputLine);
+    		        } in .close();
+    		        // print result
+    		        System.out.println(response.toString());
+    		    } else {
+    		        System.out.println("POST NOT WORKED");
+    		    }
        	  
        	  
     	}catch(Exception e) {
