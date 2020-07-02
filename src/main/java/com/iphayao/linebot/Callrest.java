@@ -65,11 +65,11 @@ public class Callrest {
     		
     		String input = "{\"OrderID\":1}";
     		//String input = "{\"qty\":100,\"name\":\"iPad 4\"}";
-    		
+    		System.out.println("Call Rest : OS ");
     		OutputStream os = conn.getOutputStream();
     		os.write(input.getBytes());
     		os.flush();
-
+    		System.out.println("Call Rest : OS Get");
     		if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
     			throw new RuntimeException("Failed : HTTP error code : "
     				+ conn.getResponseCode());
