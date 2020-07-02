@@ -63,8 +63,8 @@ public class Callrest {
     		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
     		    postConnection.setRequestMethod("POST");
     		   // postConnection.setRequestProperty("OrderID","1");
-    		    postConnection.setRequestProperty("Content-Type", "application/json");
-    		    postConnection.setDoOutput(true);
+    		  //  postConnection.setRequestProperty("Content-Type", "application/json");
+    		  //  postConnection.setDoOutput(true);
     		   // postConnection.connect();
     		    System.out.println("Call Rest : OS ");
 //    		    OutputStream os = postConnection.getOutputStream();
