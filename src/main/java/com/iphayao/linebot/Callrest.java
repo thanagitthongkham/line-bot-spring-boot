@@ -61,13 +61,16 @@ public class Callrest {
     		 //URL url = new URL("http://localhost:8082/rest/prsorderservice/v1/Post");
     		// https://petstore.swagger.io/v2/pet/findByStatus?status=available
     		
-    		 URL obj = new URL("http://localhost/rest/prsorderservice/v1/test");
+    		 URL obj = new URL("http://localhost:8082/rest/prsorderservice/v1/test");
+    		 
+    		// URL obj = new URL("http://localhost:8082/rest/prsorderservice/v1/Post");
     		    HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
     		    postConnection.setRequestMethod("POST");
-    		   // postConnection.setRequestProperty("OrderID","1");
+    		  
     		   postConnection.setRequestProperty("Content-Type", "application/json");
     		   postConnection.setDoOutput(true);
     		   postConnection.setConnectTimeout(10000);
+    		   // postConnection.setRequestProperty("OrderID","1");
     		   //////////////////////////////
 //    		 URL obj = new URL("https://petstore.swagger.io/v2/pet/findByStatus?status=available");
 //    		 HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
