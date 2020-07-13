@@ -1,3 +1,7 @@
 com\iphayao\linebot\LineBotController.class
-com\iphayao\linebot\Application.class
+com\iphayao\linebot\ProductController.class
 com\iphayao\linebot\Callrest.class
+com\iphayao\linebot\SpringBootREST.class
+com\iphayao\linebot\ProductResponse.class
+com\iphayao\linebot\Application.class
+com\iphayao\linebot\Product.class
