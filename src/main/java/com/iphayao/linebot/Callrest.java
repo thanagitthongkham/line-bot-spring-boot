@@ -49,7 +49,7 @@ public class Callrest {
     	 // Create a Logger 
         Logger logger 
             = Logger.getLogger( 
-            		Callrest.class.getName()); 
+            		Callrest.class.getName()+"Method : getCV  Userid = "+Userid); 
 
        // "http://localhost:8082/rest/prsorderservice/v1/Post"
     	try {
@@ -138,5 +138,29 @@ public class Callrest {
     	
     } 
     	
+    public String getOnlineOrder(String Userid) {
+    	return "ONLINE ORDER";
+    }
+    
+    public String getOrderStatus(String Userid) {
+    	return "ORDER STATUS";
+    }
+    public String getProductPrice(String Userid) {
+    	return "PRODUCT PRICE";
+    }
+    public String getCheckBalance(String Userid) {
+    	return "CHECK BALANCE";
+    }
+    public String getPayment(String Userid) {
+    	return "PAYMENT";
+    }
+    public String getContact(String Userid) {
+    	return "CONTACT";
+    }
+    
     
 }
+
+
+
+

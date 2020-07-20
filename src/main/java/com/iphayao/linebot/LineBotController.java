@@ -71,12 +71,15 @@ public class LineBotController {
     private void handleTextContent(String replyToken, Event event, 
                                    TextMessageContent content) throws ClientProtocolException, IOException {
         String text = content.getText();
-
+        Callrest rest=new Callrest();
+        String userId = event.getSource().getUserId();
+        String reply="";
        // logger.info("Got text message from %s : %s", replyToken, text);
 
         switch (text) {
+        
             case "Profile": {
-                String userId = event.getSource().getUserId();
+                
                 if(userId != null) {
                     lineMessagingClient.getProfile(userId)
                             .whenComplete((profile, throwable) -> {
@@ -101,15 +104,63 @@ public class LineBotController {
             	 break;
             }
             case "rest":{
-            	Callrest rest=new Callrest();
-            	//String s=rest.getCV("1");
+            	
+            	
             	rest.getCV("1");
                 this.replyText(replyToken,"rest");
-              //  this.replyText(replyToken,"rest");
+             
+           	    break;
+           }
+            case "ONLINE ORDER":{
+            	
+            	
+            	reply=rest.getOnlineOrder(userId);
+            	this.replyText(replyToken,reply);
+             
+           	    break;
+           }
+            case "ORDER STATUS":{
+            	
+            	
+            	reply=rest.getOrderStatus(userId);
+            	this.replyText(replyToken,reply);
+             
+           	    break;
+           }
+            case "PRODUCT PRICE":{
+            	
+            	
+            	reply=rest.getProductPrice(userId);
+            	this.replyText(replyToken,reply);
+             
+           	    break;
+           }
+            case "CHECK BALANCE":{
+            	
+            	
+            	reply=rest.getCheckBalance(userId);
+            	this.replyText(replyToken,reply);
+             
+           	    break;
+           }
+            case "PAYMENT":{
+            	
+            	
+            	reply=rest.getPayment(userId);
+            	this.replyText(replyToken,reply);
+              
+           	    break;
+           }
+            case "CONTACT":{
+            	
+            	
+            	reply=rest.getContact(userId);
+                this.replyText(replyToken,reply);
+                
            	    break;
            }
             default:
-            //    logger.info("Return echo message %s : %s", replyToken, text);
+               // logger.info("Return echo message %s : %s", replyToken, text);
                 this.replyText(replyToken,"กรุณาใส่คำให้ถูกต้อง");
         }
     }
