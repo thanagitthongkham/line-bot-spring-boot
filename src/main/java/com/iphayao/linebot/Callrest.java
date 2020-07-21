@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Logger;
 
@@ -145,10 +146,64 @@ public class Callrest {
     public String getOrderStatus(String Userid) {
     	return "ORDER STATUS";
     }
-    public String getProductPrice(String Userid) {
+    public String getProductPrice(String Userid) throws ClientProtocolException, IOException {
+    	 URL obj = new URL("http://localhost:8082/rest/prsproductprice/v1/PostProductPrice");
+    	 
+    	 HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
+		    postConnection.setRequestMethod("POST");
+		  
+		   postConnection.setRequestProperty("Content-Type", "application/json");
+		   postConnection.setDoOutput(true);
+		   postConnection.setConnectTimeout(10000);
+		   
+		   System.out.println("Call Rest : postConnection "+postConnection.getResponseCode());
+
+			if (postConnection.getResponseCode()!=200&&postConnection.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+				throw new RuntimeException("Failed : HTTP error code : "
+					+ postConnection.getResponseCode());
+			}
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					(postConnection.getInputStream())));
+
+			String output;
+			System.out.println("Output from Server .... \n");
+			while ((output = br.readLine()) != null) {
+				System.out.println(output);
+			}
+
+			postConnection.disconnect();
+    	
     	return "PRODUCT PRICE";
     }
-    public String getCheckBalance(String Userid) {
+    public String getCheckBalance(String Userid)throws ClientProtocolException, IOException {
+    	URL obj = new URL("http://localhost:8082/rest/prscheckbalance/v1/PostCheckBalance");
+   	 
+   	 HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
+		    postConnection.setRequestMethod("POST");
+		  
+		   postConnection.setRequestProperty("Content-Type", "application/json");
+		   postConnection.setDoOutput(true);
+		   postConnection.setConnectTimeout(10000);
+		   
+		   
+		   System.out.println("Call Rest : postConnection "+postConnection.getResponseCode());
+
+			if (postConnection.getResponseCode()!=200&&postConnection.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+				throw new RuntimeException("Failed : HTTP error code : "
+					+ postConnection.getResponseCode());
+			}
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					(postConnection.getInputStream())));
+
+			String output;
+			System.out.println("Output from Server .... \n");
+			while ((output = br.readLine()) != null) {
+				System.out.println(output);
+			}
+
+			postConnection.disconnect();
     	return "CHECK BALANCE";
     }
     public String getPayment(String Userid) {
